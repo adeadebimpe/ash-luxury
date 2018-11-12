@@ -1,0 +1,42 @@
+<template>
+    <footer>
+        <div class="wrapper">
+        <a class="btn btn-black" href="#">Follow Us on Instagram</a>
+        </div>
+    </footer>
+</template>
+
+<script>
+    export default {
+        
+    }
+</script>
+
+<style lang="scss">
+    footer{
+        display:flex;
+        justify-content:center;
+        margin: 50px 0px;
+        
+        .wrapper:before,.wrapper:after{
+  content:" ";
+  width: 100px;
+  height: 1px;
+  margin: 0 10px;
+  vertical-align: super;
+  background-color:grey;
+  display:inline-block;
+}
+    }
+    .btn-black{
+        background-color: #000;
+        border: 1px solid #000;
+        color: #fff;
+       &:hover{
+          background-color: #fff;
+        border: 1px solid #000;
+        color: #000; 
+       }
+    }
+    
+</style>
