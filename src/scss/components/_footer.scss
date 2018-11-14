@@ -1,9 +1,10 @@
-footer{
+footer .wrapper{
     display:flex;
     justify-content:center;
+    align-items: center;
     margin: 50px 0px;
     
-    .wrapper:before,.wrapper:after{
+   &:before, &:after{
 content:" ";
 width: 100px;
 height: 1px;
@@ -13,13 +14,4 @@ background-color:grey;
 display:inline-block;
 }
 }
-.btn-black{
-    background-color: #000;
-    border: 1px solid #000;
-    color: #fff;
-   &:hover{
-      background-color: #fff;
-    border: 1px solid #000;
-    color: #000; 
-   }
-}
+
