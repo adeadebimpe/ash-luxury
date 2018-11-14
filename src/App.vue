@@ -232,7 +232,6 @@
       //decrease the quantity of cart item
       decreaseQuantity: function (cartItem) {
         cartItem.quantity--;
-        cartItem.product.inStock++;
 
         if (cartItem.quantity == 0) {
           this.removeItemFromCart(cartItem);

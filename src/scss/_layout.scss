@@ -1,3 +1,7 @@
+.container{
+  width: 90%;
+  margin: 0 auto;
+}
 @media only screen and (min-width: 768px) {
   .product .container {
     display: grid;
@@ -42,16 +46,10 @@
   
 }
 
-
-
-
-
-
 .row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
+ @include flex;
+ @include justify-content-between;
+ @include align-items-center;
 }
 
 .col-md-3 {

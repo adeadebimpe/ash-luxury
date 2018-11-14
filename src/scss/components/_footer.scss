@@ -1,6 +1,5 @@
 footer .wrapper {
-  display: flex;
-  justify-content: center;
+  @include flex-center;
   align-items: center;
   margin: 50px 0px;
 
