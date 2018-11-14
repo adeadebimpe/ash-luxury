@@ -112,7 +112,10 @@
             </div>
             <div class="cart-bottom">
               <h6>Continue Shopping</h6>
-              <button class="btn btn-black">Checkout</button>
+              <button class="btn btn-black" @click="checkout" >Checkout</button>
+              <div v-if="!isSubmitted">
+                <p>{{ requestMessage }}</p>
+              </div>
             </div>
           </div>
           <p v-else>Your cart is currently empty.</p>
@@ -130,6 +133,7 @@
 
   export default {
     name: "app",
+
     data() {
       return {
         isShowingCart: false,
@@ -137,6 +141,8 @@
         cart: {
           items: []
         },
+        requestMessage: " ",
+        isSubmitted: false,
         products: [{
             id: 1,
             name: "Food",
@@ -274,13 +280,16 @@
         }
       },
 
-      /**  checkout: function () {
+      checkout: function () {
         this.$http.post('http://www.mocky.io/v2/5be477442f00004900d9f521', {
-          product = this.cart.items;
+         product: this.cart.items
 
+        }).then(function(response){
+         this.requestMessage = response.data.message;
+         isSubmitted = true;
         });
-        this.cart.items = [];
-      },*/
+
+      },
       //get cart item
       getCartItem: function (product) {
         for (var i = 0; i < this.cart.items.length; i++) {
