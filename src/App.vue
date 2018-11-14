@@ -30,9 +30,8 @@
 
         <div class="product">
           <div class="container">
-            <div v-for="product in products" :key="product.id" :class="['product__item' + product.id, 'product__item' ]"
-              @click="showModal = true">
-              <img :src="product.avatar" class="product_image" width="100%" alt="Product Image" />
+            <div v-for="product in products" :key="product.id" :class="['product__item' + product.id, 'product__item' ]">
+              <img :src="product.avatar" class="product_image" width="100%" alt="Product Image" @click="showModal = true" />
               <div class="product__item--text">
                 <h5>{{product.price | currency }}</h5>
                 <p>{{product.description}}</p>
@@ -40,22 +39,51 @@
                 <button class="btn btn-danger" @click="removeProductFromCart(product)"> Remove from Cart</button>
 
               </div>
+              <div id="modal" v-if="showModal" @close="showModal = false">
+                <transition name="modal">
+                  <div class="modal-mask">
+                    <div class="modal-wrapper">
+                      <div class="modal-container">
+                        <div class="modal-header">
 
+                        </div>
+                        <div class="modal-body">
+                          <div class="modal-image">
+                            <img :src="product.avatar" class="product_image" width="100%" alt="Product Image" />
+                            <h5>{{product.price | currency }}</h5>
+                          </div>
+                          <div class="modal-description">
+                            <h5>{{product.name}}</h5>
+                            <p>{{product.description}}</p>
+                          </div>
+                          <button class="btn btn-black" @click="addProductToCart(product)" v-once> Add to Cart</button>
+
+                        </div>
+                        <div class="modal-footer">
+                          <p @click="close">
+                            Checkout
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </transition>
+              </div>
             </div>
           </div>
         </div>
         <footer>
-          
-            <div class="wrapper">
-              <a class="btn btn-black" href="#">Follow Us on Instagram</a>
-            </div>
-          
+
+          <div class="wrapper">
+            <a class="btn btn-black" href="#">Follow Us on Instagram</a>
+          </div>
+
         </footer>
       </div>
       <div v-else>
         <h1 class="cart-header">Your Cart</h1>
         <div class="container">
-          
+
           <div class="cart" v-if="cart.items.length > 0">
 
             <div v-for="item in cart.items" :key="item.product.id" class="cart-item row">
@@ -84,7 +112,7 @@
             </div>
             <div class="cart-bottom">
               <h6>Continue Shopping</h6>
-              <button class="btn btn-black" >Checkout</button>
+              <button class="btn btn-black">Checkout</button>
             </div>
           </div>
           <p v-else>Your cart is currently empty.</p>
@@ -262,6 +290,9 @@
         }
 
         return null;
+      },
+      close() {
+        this.showModal = false;
       },
 
     },
