@@ -84,7 +84,7 @@
             </div>
             <div class="cart-bottom">
               <h6>Continue Shopping</h6>
-              <button class="btn btn-black" @click="checkout">Checkout</button>
+              <button class="btn btn-black" >Checkout</button>
             </div>
           </div>
           <p v-else>Your cart is currently empty.</p>
@@ -289,5 +289,7 @@
 
 </script>
 
-<style lang="scss">
+<style>
+
+
 </style>
