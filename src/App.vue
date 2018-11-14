@@ -33,6 +33,7 @@
               <h5>{{product.price | currency }}</h5>
               <p>{{product.description}}</p>
               <button class="btn btn-white" @click="addProductToCart(product)"> Add to Cart</button>
+              <button class="btn btn-white" @click="removeProductToCart(product)"> Remove from Cart</button>
             </div>
 
           </div>
@@ -62,7 +63,9 @@
               <p> {{ item.quantity }} </p>
               <button class="btn btn-black" @click="decreaseQuantity(item)">-</button>
             </div>
-
+            <div class="cart-remove">
+              <p>Remove</p>
+            </div>
           </div>
           <hr>
           <div class="cart-total">
@@ -195,7 +198,20 @@ export default {
 
       
     },
+    removeProductToCart: function(product) {
+      var cartItem = this.getCartItem(product);
 
+      if (cartItem = null) {
+        cartItem.quantity == 0;
+      } else {
+        this.cart.items.splice({
+          product: product,
+          quantity: 1
+        });
+      }
+
+      
+    },
     increaseQuantity: function(cartItem) {
       
       cartItem.quantity++;
@@ -240,6 +256,8 @@ export default {
   },
 
   computed: {
+    
+
     cartTotal: function() {
       var total = 0;
 
