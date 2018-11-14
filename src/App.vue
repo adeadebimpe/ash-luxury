@@ -45,7 +45,7 @@
       </div>
       <div v-else>
         <h1 class="cart-header">Your Cart</h1>
-        <div class="cart" c>
+        <div class="cart" v-if="cart.items.length > 0">
           
           <div  v-for="item in cart.items" :key="item.product.id" class="cart-item row">
             <div class="col-md-3">
@@ -74,6 +74,7 @@
             <button class="btn btn-black">Checkout</button>
           </div>
         </div>
+         <p v-else>Your cart is currently empty.</p>
       </div>
 
     </div>
